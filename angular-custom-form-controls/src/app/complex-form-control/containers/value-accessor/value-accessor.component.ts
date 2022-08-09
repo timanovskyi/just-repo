@@ -7,13 +7,16 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./value-accessor.component.scss'],
 })
 export class ValueAccessorComponent implements OnInit {
-  form: FormGroup = this._fb.group({
-    itemName: new FormControl(),
-  });
+  form: FormGroup = new FormGroup({});
 
   constructor(private _fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this._fb.group({
+      itemName: new FormControl(),
+      isLocked: new FormControl(false),
+    });
+  }
 
   onSubmit() {
     console.log(this.form.value);
