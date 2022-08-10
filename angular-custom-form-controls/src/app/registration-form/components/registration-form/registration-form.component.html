@@ -1,59 +1,76 @@
 <section>
-  <form class="registration-form"
-        (ngSubmit)="onSubmit()"
-        *ngIf="registrationForm"
-        [formGroup]="registrationForm"
-  >
-    <mat-form-field>
-      <label for="name">
-        Name
-        <span *ngIf="nameField?.hasError('required') && nameField?.dirty">
-          This field is a required field
-        </span>
-      </label>
-      <input matInput type="text" formControlName="name" id="name"
-             [ngClass]="{'has-error': nameField.invalid && nameField.dirty}">
-    </mat-form-field>
-    <mat-form-field>
-      <label for="email">
-        Email
-        <span *ngIf="emailField?.hasError('required') && emailField?.dirty">
-          This field is a required field
-        </span>
-      </label>
-      <input matInput type="email" formControlName="email" id="email"
-             [ngClass]="{'has-error': emailField.invalid && emailField.dirty}"
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <label for="password">
-        Password
-        <span *ngIf="passwordField?.hasError('required') && passwordField?.dirty">
-          This field is a required field
-        </span>
-      </label>
-      <div class="registration-form__row">
-        <input matInput [type]="passwordFieldType" formControlName="password" id="password"
-               [ngClass]="{'has-error': passwordField.invalid && passwordField.dirty}"
+  <mat-card>
+    <form (ngSubmit)="onSubmit()"
+          *ngIf="registrationForm"
+          class="registration-form"
+          [formGroup]="registrationForm"
+    >
+      <mat-form-field>
+        <label for="name">Name</label>
+        <input id="name"
+               matInput
+               type="text"
+               formControlName="name"
+               [ngClass]="{'has-error': nameField.invalid && nameField.dirty}"
         >
-        <button type="button" (click)="togglePasswordVisible()">
-          <mat-icon>{{passwordFieldType === 'text' ? 'visibility' : 'visibility_off' }}</mat-icon>
-        </button>
-      </div>
-    </mat-form-field>
+        <mat-error *ngIf="nameField?.hasError('required') && nameField?.dirty">
+          This field is a required field
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <label for="favouriteHexCode">
-        Hex color
-      </label>
-      <div class="registration-form__row">
-        <input type="text" matInput formControlName="favouriteHexCode" id="favouriteHexCode" maxlength="6"
+      <mat-form-field>
+        <label for="email">Email</label>
+        <input matInput
+               id="email"
+               type="email"
+               formControlName="email"
+               [ngClass]="{'has-error': emailField.invalid && emailField.dirty}"
         >
-        <div [ngStyle]="{
-        background: favouriteHexCodeValue !== ''
-         ? favouriteHexCodeValue
-         : 'transparent'}"></div>
-      </div>
-    </mat-form-field>
-  </form>
+        <mat-error *ngIf="emailField?.hasError('required') && emailField?.dirty">
+          This field is a required field
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label for="password">Password</label>
+        <div class="registration-form__row">
+          <input matInput
+                 id="password"
+                 [type]="passwordFieldType"
+                 formControlName="password"
+                 [ngClass]="{'has-error': passwordField.invalid && passwordField.dirty}"
+          >
+          <mat-error *ngIf="passwordField?.hasError('required') && passwordField?.dirty">
+            This field is a required field
+          </mat-error>
+          <button matSuffix
+                  type="button"
+                  (click)="togglePasswordVisible()"
+          >
+            <mat-icon>
+              {{passwordFieldType === 'text' ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+          </button>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label for="favouriteHexCode">Hex color</label>
+        <div class="registration-form__row">
+          <input matInput
+                 type="text"
+                 maxlength="6"
+                 id="favouriteHexCode"
+                 formControlName="favouriteHexCode"
+          >
+          <div matSuffix
+               class="hex-container"
+               [ngStyle]="{ background: favouriteHexCodeValue !== '' ? favouriteHexCodeValue : 'transparent'}"
+          ></div>
+        </div>
+      </mat-form-field>
+
+    </form>
+  </mat-card>
 </section>
+
