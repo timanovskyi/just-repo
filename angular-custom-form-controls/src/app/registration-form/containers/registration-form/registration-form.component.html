@@ -1,0 +1,57 @@
+<section>
+  <mat-card>
+    <form (ngSubmit)="onSubmit()"
+          *ngIf="registrationForm"
+          class="registration-form"
+          [formGroup]="registrationForm"
+    >
+      <app-form-element fieldName="name"
+                        formControlName="name"
+                        [parentForm]="registrationForm"
+      ></app-form-element>
+
+      <app-form-element fieldName="email"
+                        formControlName="email"
+                        [parentForm]="registrationForm"
+      ></app-form-element>
+
+      <app-form-element fieldName="password"
+                        formControlName="password"
+                        [parentForm]="registrationForm"
+                        [additionalType]="passwordFieldType"
+      >
+        <ng-container>
+          <button type="button" (click)="togglePasswordVisible()">
+            <mat-icon>
+              {{passwordFieldType === 'text' ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+          </button>
+        </ng-container>
+      </app-form-element>
+
+      <app-form-element fieldName="favouriteHexCode"
+                        [parentForm]="registrationForm"
+                        formControlName="favouriteHexCode"
+      >
+        <ng-container>
+          <div class="hex-container"
+               [ngStyle]="{
+                   background: favouriteHexCodeValue !== ''
+                     ? favouriteHexCodeValue
+                     : 'transparent'
+               }"
+          ></div>
+        </ng-container>
+      </app-form-element>
+
+      <button mat-button
+              type="submit"
+              mat-raised-button
+              [disabled]="registrationForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-card>
+</section>
+

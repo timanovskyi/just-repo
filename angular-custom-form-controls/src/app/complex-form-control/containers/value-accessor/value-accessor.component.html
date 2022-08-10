@@ -1,0 +1,14 @@
+<mat-card>
+  <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field">
+      <input
+        matInput
+        formControlName="itemName"
+        placeholder="Add item"
+      >
+    </mat-form-field>
+    <button type="submit" [disabled]="!form.touched" mat-stroked-button>Add item</button>
+    <app-lock-input formControlName="isLocked"></app-lock-input>
+  </form>
+</mat-card>
+

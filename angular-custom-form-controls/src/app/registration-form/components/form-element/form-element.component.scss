@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  width: 100%;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  ::ng-deep div.mat-form-field-suffix {
+    display: flex;
+    margin: auto;
+  }
+}
+
+
