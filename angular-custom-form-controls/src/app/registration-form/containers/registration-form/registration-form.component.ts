@@ -17,18 +17,6 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(private _fb: FormBuilder) {}
 
-  get nameField(): FormControl {
-    return this.registrationForm.get('name') as FormControl;
-  }
-
-  get emailField(): FormControl {
-    return this.registrationForm.get('email') as FormControl;
-  }
-
-  get passwordField(): FormControl {
-    return this.registrationForm.get('password') as FormControl;
-  }
-
   get favouriteHexCodeValue(): string {
     return '#' + this.registrationForm.get('favouriteHexCode')?.value;
   }
@@ -55,16 +43,16 @@ export class RegistrationFormComponent implements OnInit {
 
   private _initRegistrationForm() {
     this.registrationForm = this._fb.group({
-      name: new FormControl('', {
+      name: new FormControl('Test', {
         validators: [Validators.required],
       }),
-      email: new FormControl('', {
+      email: new FormControl('email@gmail.com', {
         validators: [Validators.required, Validators.email],
       }),
-      password: new FormControl('', {
+      password: new FormControl('test', {
         validators: [Validators.required],
       }),
-      favouriteHexCode: new FormControl(''),
+      favouriteHexCode: new FormControl('000'),
     });
   }
 }

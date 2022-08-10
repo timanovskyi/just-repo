@@ -1,0 +1,26 @@
+<mat-form-field>
+  <label [for]="fieldName">{{fieldName | titlecase}}</label>
+  <input matInput
+         [value]="value"
+         [id]="fieldName"
+         [disabled]="isDisabled"
+         [type]="getTypeOfInput()"
+         (blur)="touched()"
+         (input)="onChange($event)"
+         [ngClass]="{'has-error': formField.invalid && formField.dirty}"
+  >
+  <app-error-handler typeOfError="required"
+                     [formField]="formField"
+  ></app-error-handler>
+  <app-error-handler typeOfError="email"
+                     *ngIf="isEmailField"
+                     [formField]="formField"
+  ></app-error-handler>
+
+  <div matSuffix>
+    <ng-content></ng-content>
+  </div>
+</mat-form-field>
+
+{{formField?.hasError('required')}}
+{{formField?.hasError('email')}}
