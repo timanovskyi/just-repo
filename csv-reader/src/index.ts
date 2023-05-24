@@ -1,16 +1,12 @@
 import { MatchReader } from "./entities/match-reader";
-import { MatchResult } from "./models/match-result.model";
+import { Summary } from "./entities/summary";
+import { Team } from "./models/team.model";
 
-const matches = new MatchReader("./assests/football.csv");
-matches.read();
+const matchReader = MatchReader.fromCsv("./assests/football.csv");
+matchReader.load();
 
-let manUnitedWins = 0;
-for (let match of matches.data) {
-  if (match[1] === "Man United" && match[5] === MatchResult.HOME_WIN) {
-    manUnitedWins++;
-  } else if (match[2] === "Man United" && match[5] === MatchResult.AWAY_WIN) {
-    manUnitedWins++;
-  }
-}
-
-console.log(manUnitedWins);
+const summary = Summary.winsAnalysisWithHtmlReport(
+  Team.ARSENAL,
+  "report.html"
+);
+summary.buildAndPrintReport(matchReader.matches);

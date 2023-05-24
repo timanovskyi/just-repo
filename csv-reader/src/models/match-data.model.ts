@@ -1,6 +1,6 @@
 import { MatchResult } from "./match-result.model";
 
-export type MathData = [
+export type MatchData = [
   Date,
   string,
   string,

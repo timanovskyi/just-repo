@@ -1,10 +1,9 @@
 import fs from "fs";
-import { MathData } from "../models/match-data.model";
-import { MatchResult } from "../models/match-result.model";
-import { dateParser } from "../utils/parser.util";
+import { DataReader } from "../models/match-reader.model";
 
-export abstract class CsvFileReader<T> {
-  data: T[] = [];
+export class CsvFileReader implements DataReader{
+
+  data: string[][] = [];
 
   constructor(private _fileName: string) {}
 
@@ -16,8 +15,5 @@ export abstract class CsvFileReader<T> {
 
       .split("\n")
       .map((r: string): string[] => r.split(","))
-      .map(this.mapRow);
   }
-
-  abstract mapRow(row: string[]): T;
 }
