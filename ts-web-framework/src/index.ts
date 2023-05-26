@@ -1,4 +1,4 @@
-import {User} from './entities'
+import {User} from "./entities";
 
-const user = new User({name: 'myName', age: 20})
-console.log(user.get('name'));
+const user = new User({});
+user.saveData({name: 'test111111', age: 31})

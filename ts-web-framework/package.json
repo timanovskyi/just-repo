@@ -1,8 +1,15 @@
 {
   "scripts": {
-    "start": ""
+    "start:parcel": "npx parcel index.html",
+    "start:json-server": "json-server -w db.json"
   },
   "devDependencies": {
+    "buffer": "^5.7.1",
+    "parcel": "^2.8.3",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "json-server": "^0.17.3"
   }
 }
