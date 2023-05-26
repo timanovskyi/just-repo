@@ -1,6 +1,6 @@
-import { Callback, Events, UserProps, OptionalUserProps } from "../models";
+import { Callback, Events, ModelEvents } from "../models";
 
-export class Eventing {
+export class Eventing implements ModelEvents {
   private _events: Events = {};
 
   registerEvent(eventName: string, callback: Callback) {

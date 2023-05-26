@@ -1,4 +1,10 @@
-import {User} from "./entities";
+import { User } from "./entities";
 
-const user = new User({});
-user.saveUser({name: 'test1', id: 2});
+const user = User.createUser({id: 1});
+
+user.registerEvent("fetch", () => {
+  console.log("user changed")
+  console.log(user);
+});
+
+user.fetchData('id')

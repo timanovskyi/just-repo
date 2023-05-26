@@ -1,4 +1,5 @@
 export * from "./user";
 export * from "./eventing";
-export * from "./sync";
+export * from "./api-sync";
 export * from "./attributes";
+export * from "./general-model";
