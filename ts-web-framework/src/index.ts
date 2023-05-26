@@ -1,4 +1,4 @@
 import {User} from "./entities";
 
 const user = new User({});
-user.saveData({name: 'test111111', age: 31})
+user.saveUser({name: 'test1', id: 2});
