@@ -6,8 +6,12 @@ export class ApiSync<T extends ReuiredApiSyncProperties>
 {
   constructor(private _rootUrl: string) {}
 
-  fetchData(id: string | number): Promise<T> {
+  fetchDataById(id: string | number): Promise<T> {
     return axios.get(`${this._rootUrl}/${id}`);
+  }
+
+  fetchAllData(): Promise<AxiosResponse> {
+    return axios.get(this._rootUrl);
   }
 
   saveData(data: Partial<T>): Promise<unknown> {

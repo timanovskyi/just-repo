@@ -1,18 +1,13 @@
 import { ModelAttributes, ModelAPISync, ModelEvents } from "../models/";
+
 export class GeneralModel<T> {
+  triggerEvent = this._events.triggerEvent;
+  registerEvent = this._events.registerEvent;
   constructor(
     private _attributes: ModelAttributes<T>,
     private _events: ModelEvents,
     private _apiSync: ModelAPISync<T>
   ) {}
-
-  get triggerEvent() {
-    return this._events.triggerEvent;
-  }
-
-  get registerEvent() {
-    return this._events.registerEvent;
-  }
 
   saveData(data: Partial<T>): Promise<unknown> {
     return this._apiSync
@@ -21,11 +16,11 @@ export class GeneralModel<T> {
       .catch(() => console.log("Sorry, lets try one more time"));
   }
 
-  async fetchData(key: keyof T): Promise<unknown> {
+  async fetchDataById(id: keyof T): Promise<unknown> {
     try {
-      const el = this._attributes.get(key) as string | number;
-      const data = await this._apiSync.fetchData(el);
-      this._updateValueAndTrigger(data, "fetch");
+      const el = this._attributes.get(id) as string | number;
+      const data = await this._apiSync.fetchDataById(el);
+      this._updateValueAndTrigger(data, "fetchDataById");
       return data;
     } catch (_) {
       console.log("Sorry, lets try one more time");
