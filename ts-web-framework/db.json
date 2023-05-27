@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "User 1",
+      "age": 10,
+      "id": 1
+    },
+    {
+      "name": "User 2",
+      "age": 11,
+      "id": 2
+    },
+    {
+      "name": "User 3",
+      "age": 12,
+      "id": 3
+    }
+  ]
+}
