@@ -23,7 +23,7 @@ export class Collection<T, K extends ReuiredApiSyncProperties> {
     return this._apiSync
       .fetchAllData()
       .then((response: AxiosResponse) =>
-        this._updateValueAndTrigger(response.data, "fetchAllData")
+        this._updateValueAndTrigger(response.data, "change")
       )
       .catch((e) => console.log("Sorry, lets try one more time"));
   }

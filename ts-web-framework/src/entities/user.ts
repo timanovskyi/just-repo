@@ -17,4 +17,11 @@ export class User extends GeneralModel<UserProps> {
 
   // TODO
   // static createUserWithLocalStorage(): User
+
+  setRandomAge(): void {
+    this.updateValueAndTrigger(
+      { age: Math.round(Math.random() * 100) },
+      "change"
+    );
+  }
 }

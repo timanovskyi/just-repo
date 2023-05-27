@@ -9,10 +9,18 @@ export class GeneralModel<T> {
     private _apiSync: ModelAPISync<T>
   ) {}
 
+  getPartOfModel(v: keyof T) {
+    return this._attributes.get(v);
+  }
+
+  setPartOfModel(v: Partial<T>) {
+    return this._attributes.set(v);
+  }
+
   saveData(data: Partial<T>): Promise<unknown> {
     return this._apiSync
       .saveData(data)
-      .then(() => this._updateValueAndTrigger(data, "save"))
+      .then(() => this.updateValueAndTrigger(data, "change"))
       .catch(() => console.log("Sorry, lets try one more time"));
   }
 
@@ -20,15 +28,15 @@ export class GeneralModel<T> {
     try {
       const el = this._attributes.get(id) as string | number;
       const data = await this._apiSync.fetchDataById(el);
-      this._updateValueAndTrigger(data, "fetchDataById");
+      this.updateValueAndTrigger(data, "change");
       return data;
     } catch (_) {
       console.log("Sorry, lets try one more time");
     }
   }
 
-  private _updateValueAndTrigger(data: Partial<T>, eventName: string) {
-    this._attributes.set(data);
+  updateValueAndTrigger(data: Partial<T>, eventName: string) {
+    this.setPartOfModel(data);
     this.triggerEvent(eventName);
   }
 }
