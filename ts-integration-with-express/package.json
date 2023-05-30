@@ -1,0 +1,21 @@
+{
+  "name": "ts-integration-with-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.0.1",
+    "cookie-session": "^2.0.0",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}

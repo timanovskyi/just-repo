@@ -3,5 +3,9 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-.idea
+node_modules
+dist
 package-lock.json
+.cache
+.idea
+build
