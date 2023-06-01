@@ -5,11 +5,13 @@
   "scripts": {
     "start": "nx serve",
     "start:todos": "nx serve todos",
+    "start:user-search": "nx serve user-search",
     "build": "nx build",
     "test": "nx test"
   },
   "private": true,
   "dependencies": {
+    "@nrwl/node": "^16.3.1",
     "core-js": "^3.6.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
