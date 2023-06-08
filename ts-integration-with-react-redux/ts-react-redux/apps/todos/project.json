@@ -16,7 +16,6 @@
         "main": "apps/todos/src/main.tsx",
         "polyfills": "apps/todos/src/polyfills.ts",
         "tsConfig": "apps/todos/tsconfig.app.json",
-        "assets": ["apps/todos/src/favicon.ico", "apps/todos/src/assets"],
         "styles": ["apps/todos/src/styles.scss"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"

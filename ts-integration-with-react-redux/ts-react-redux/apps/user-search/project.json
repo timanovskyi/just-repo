@@ -16,10 +16,6 @@
         "main": "apps/user-search/src/main.tsx",
         "polyfills": "apps/user-search/src/polyfills.ts",
         "tsConfig": "apps/user-search/tsconfig.app.json",
-        "assets": [
-          "apps/user-search/src/favicon.ico",
-          "apps/user-search/src/assets"
-        ],
         "styles": ["apps/user-search/src/styles.scss"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
