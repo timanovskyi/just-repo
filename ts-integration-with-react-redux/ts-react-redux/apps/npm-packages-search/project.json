@@ -1,0 +1,80 @@
+{
+  "name": "npm-packages-search",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/npm-packages-search/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/npm-packages-search",
+        "index": "apps/npm-packages-search/src/index.html",
+        "baseHref": "/",
+        "main": "apps/npm-packages-search/src/main.tsx",
+        "polyfills": "apps/npm-packages-search/src/polyfills.ts",
+        "tsConfig": "apps/npm-packages-search/tsconfig.app.json",
+        "styles": ["apps/npm-packages-search/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/npm-packages-search/src/environments/environment.ts",
+              "with": "apps/npm-packages-search/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "npm-packages-search:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "npm-packages-search:build:development"
+        },
+        "production": {
+          "buildTarget": "npm-packages-search:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/npm-packages-search/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/npm-packages-search"],
+      "options": {
+        "jestConfig": "apps/npm-packages-search/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
