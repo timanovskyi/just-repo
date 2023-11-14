@@ -11,7 +11,11 @@ const LoginForm = ({ handleOnClose, isOpen }) => {
 
   const { setUser } = useContext(StoreContext);
 
-  useEffect(() => resetStateOfInputs(), [resetStateOfInputs]);
+  useEffect(() => {
+    if (isOpen) {
+      resetStateOfInputs();
+    }
+  }, [isOpen]);
 
   const handleOnChangeLogin = ({ target: { value } }) => setLogin(value);
   const handleOnChangePassword = ({ target: { value } }) => setPassword(value);
