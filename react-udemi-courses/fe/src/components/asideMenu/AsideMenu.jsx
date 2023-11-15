@@ -1,10 +1,9 @@
 import "./AsideMenu.scss";
 import { useContext } from "react";
 import { StoreContext } from "../../store/StoreProvider";
-import AdminMenu from "./subomponents/adminMenu";
-import UserMenu from "./subomponents/userMenu";
-
-const ADMIN_TYPE = 1;
+import { ADMIN_TYPE } from "../../models";
+import AdminMenu from "./subomponents/adminMenu/AdminMenu";
+import UserMenu from "./subomponents/userMenu/UserMenu";
 
 const AsideMenu = ({}) => {
   const { user } = useContext(StoreContext);
@@ -14,8 +13,10 @@ const AsideMenu = ({}) => {
 
   return (
     <section className="aside-menu">
-      <UserMenu isUserLogged={Boolean(user)}></UserMenu>
-      {adminMenuComponent}
+      <div className="aside-menu__nav-wrapper">
+        <UserMenu isUserLogged={Boolean(user)}></UserMenu>
+        {adminMenuComponent}
+      </div>
     </section>
   );
 };
