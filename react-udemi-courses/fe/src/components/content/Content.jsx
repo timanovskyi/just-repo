@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { StoreContext } from "../../store/StoreProvider";
 import { ADMIN_TYPE } from "../../models";
 import Courses from "../courses/Courses";
+import UserCourses from "../userCourses/UserCourses";
 
 const Content = ({}) => {
   const { user } = useContext(StoreContext);
@@ -14,7 +15,11 @@ const Content = ({}) => {
       <Routes>
         <Route exaxt path="/" element={<Courses />}></Route>
         {isUserLogged && (
-          <Route exaxt path="/my-courses" element={<p>My C</p>}></Route>
+          <Route
+            exaxt
+            path="/my-courses"
+            element={<UserCourses></UserCourses>}
+          ></Route>
         )}
         {isAdmin && (
           <Route

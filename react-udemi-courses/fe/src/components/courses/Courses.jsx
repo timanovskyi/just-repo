@@ -1,7 +1,7 @@
 import "./Courses.scss";
 import React, { useContext } from "react";
 import { StoreContext } from "../../store/StoreProvider";
-import Course from "./subcomponents/course/Course";
+import Course from "../course/Course";
 import { getRandomImg } from "../../helpers/images";
 
 const Courses = ({}) => {
