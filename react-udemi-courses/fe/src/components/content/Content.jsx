@@ -5,6 +5,7 @@ import { StoreContext } from "../../store/StoreProvider";
 import { ADMIN_TYPE } from "../../models";
 import Courses from "../courses/Courses";
 import UserCourses from "../userCourses/UserCourses";
+import AdminPanel from "../adminPanel/AdminPanel";
 
 const Content = ({}) => {
   const { user } = useContext(StoreContext);
@@ -25,7 +26,7 @@ const Content = ({}) => {
           <Route
             exaxt
             path="/manage-courses"
-            element={<p>Manage Courses</p>}
+            element={<AdminPanel></AdminPanel>}
           ></Route>
         )}
         {/*<Navigate to=""></Navigate>*/}
