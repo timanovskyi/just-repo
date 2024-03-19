@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { EmployeeEditorComponent } from '../employee-editor/employee-editor.component';
 
 @Component({
-  selector: 'app-app',
+  selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, EmployeeEditorComponent],
   templateUrl: './app.component.html',

@@ -1,2 +1,23 @@
 <h2>Employee Editor</h2>
-<div class="card">Employee</div>
+
+<form [formGroup]="employeeForm">
+  <ng-container formArrayName="employees">
+
+    @for (employee of employees.controls; track $index) {
+      <div class="card" [formGroupName]="$index">
+        <fieldset class="form-field">
+          <label>Name</label>
+          <input type="text" formControlName="name"/>
+        </fieldset>
+        <fieldset class="form-field">
+          <label>Firstname</label>
+          <input type="text" formControlName="firstname"/>
+        </fieldset>
+      </div>
+    }
+  </ng-container>
+</form>
+
+<button class="card__button" (click)="addEmployee()">Add employee</button>
+
+{{ employeeForm.valueChanges | async | json }}
