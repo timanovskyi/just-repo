@@ -16,12 +16,18 @@
 
       <ng-container formArrayName="skills">
         @for (skill of getSkills(employeeIndex).controls; let skillIndex =
-        $index; track skill.get('id') ) {
-        <div class="card" [formGroupName]="skillIndex">
+        $index; track skill.get('id')) {
+        <div class="skill card" [formGroupName]="skillIndex">
           <fieldset class="form-field">
             <label>Title</label>
             <input type="text" formControlName="title" />
           </fieldset>
+          <button
+            class="card__button"
+            (click)="deleteSkill(employeeIndex, skillIndex)"
+          >
+            Delete skill
+          </button>
         </div>
         }
       </ng-container>

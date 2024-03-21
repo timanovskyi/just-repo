@@ -49,6 +49,10 @@ export class EmployeeEditorComponent {
     this.getSkills(i).push(skill);
   }
 
+  deleteSkill(employeeIndex: number, skillIndex: number) {
+    this.getSkills(employeeIndex).removeAt(skillIndex);
+  }
+
   private _generateId(): number {
     return Math.floor(Math.random() * 10000);
   }
