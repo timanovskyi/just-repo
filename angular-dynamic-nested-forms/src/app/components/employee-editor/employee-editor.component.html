@@ -2,18 +2,33 @@
 
 <form [formGroup]="employeeForm">
   <ng-container formArrayName="employees">
+    @for (employee of employees.controls; let employeeIndex = $index; track
+    employee.get('id')) {
+    <div class="card" [formGroupName]="employeeIndex">
+      <fieldset class="form-field">
+        <label>Name</label>
+        <input type="text" formControlName="name" />
+      </fieldset>
+      <fieldset class="form-field">
+        <label>Firstname</label>
+        <input type="text" formControlName="firstname" />
+      </fieldset>
 
-    @for (employee of employees.controls; track $index) {
-      <div class="card" [formGroupName]="$index">
-        <fieldset class="form-field">
-          <label>Name</label>
-          <input type="text" formControlName="name"/>
-        </fieldset>
-        <fieldset class="form-field">
-          <label>Firstname</label>
-          <input type="text" formControlName="firstname"/>
-        </fieldset>
-      </div>
+      <ng-container formArrayName="skills">
+        @for (skill of getSkills(employeeIndex).controls; let skillIndex =
+        $index; track skill.get('id') ) {
+        <div class="card" [formGroupName]="skillIndex">
+          <fieldset class="form-field">
+            <label>Title</label>
+            <input type="text" formControlName="title" />
+          </fieldset>
+        </div>
+        }
+      </ng-container>
+      <button class="card__button" (click)="addSkill(employeeIndex)">
+        Add skill
+      </button>
+    </div>
     }
   </ng-container>
 </form>

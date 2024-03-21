@@ -27,12 +27,29 @@ export class EmployeeEditorComponent {
     return this.employeeForm.get('employees') as FormArray;
   }
 
+  getSkills(i: number) {
+    return this.employees.at(i).get('skills') as FormArray;
+  }
+
   addEmployee() {
     const employee = this._fb.group({
+      id: [this._generateId()],
       firstname: ['', Validators.required],
       name: ['', Validators.required],
       skills: this._fb.array([]),
     });
     this.employees.push(employee);
+  }
+
+  addSkill(i: number) {
+    const skill = this._fb.group({
+      id: [this._generateId()],
+      title: ['', Validators.required],
+    });
+    this.getSkills(i).push(skill);
+  }
+
+  private _generateId(): number {
+    return Math.floor(Math.random() * 10000);
   }
 }
