@@ -7,6 +7,7 @@ import { CardList } from "../../components/card-list/card-list.js";
 export class MainView extends AbstractView {
   state = {
     list: [],
+    numFound: 0,
     loading: false,
     searchQuery: undefined,
     offset: 0,
@@ -22,7 +23,7 @@ export class MainView extends AbstractView {
 
   appStateHook(path) {
     if (path === "favorites") {
-      console.log("");
+      this.render();
     }
   }
 
@@ -34,6 +35,7 @@ export class MainView extends AbstractView {
         this.state.offset
       );
       this.state.loading = false;
+      this.state.numFound = data.numFound;
       this.state.list = data.docs;
     }
     console.log(path);
@@ -62,5 +64,10 @@ export class MainView extends AbstractView {
       `https://openlibrary.org/search.json?q=${q}&offset=${offset}`
     );
     return res.json();
+  }
+
+  destoy() {
+    onChange.unsubscribe(this.appState);
+    onChange.unsubscribe(this.state);
   }
 }
