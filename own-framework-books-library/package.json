@@ -1,0 +1,27 @@
+{
+  "name": "own-framework-books-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timanovskyi/just-repo.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "rollup": "^4.22.2",
+    "rollup-plugin-import-css": "^3.5.1"
+  },
+  "dependencies": {
+    "on-change": "^5.0.1"
+  }
+}
