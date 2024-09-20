@@ -21,6 +21,11 @@ export class MainView extends AbstractView {
     this.setTitle("Search book");
   }
 
+  destroy() {
+    onChange.unsubscribe(this.appState);
+    onChange.unsubscribe(this.state);
+  }
+
   appStateHook(path) {
     if (path === "favorites") {
       this.render();
@@ -38,17 +43,18 @@ export class MainView extends AbstractView {
       this.state.numFound = data.numFound;
       this.state.list = data.docs;
     }
-    console.log(path);
-    if (path === "loading" || path === "list") {
+    if (path === "list" || path === "loading") {
       this.render();
     }
   }
 
   render() {
     const main = document.createElement("div");
+    main.innerHTML = `
+			<h1>Books founded – ${this.state.numFound}</h1>
+		`;
     main.append(new Search(this.state).render());
     main.append(new CardList(this.appState, this.state).render());
-    // main.innerHTML = `Count of books is ${this.appState.favorites.length}`;
     this.app.innerHTML = "";
     this.app.append(main);
     this.renderHeader();
